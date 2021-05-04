@@ -1,0 +1,14 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: rpuniverse
+    environment:
+      - POSTGRES_DB=rpuniverse-db
+      - POSTGRES_USER=deathwing
+      - POSTGRES_PASSWORD=cataclysm
+    ports:
+      - 3000:5432
