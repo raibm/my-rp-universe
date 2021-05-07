@@ -1,6 +1,8 @@
 package com.wow.myrpuniverse.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.CascadeType;
@@ -22,6 +24,8 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "TB_USR_USER")
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable {
 
     @Id

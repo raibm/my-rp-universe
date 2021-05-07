@@ -1,6 +1,8 @@
 package com.wow.myrpuniverse.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -21,6 +23,8 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "TB_CHR_CHARACTER")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Character implements Serializable {
 
     @Id
