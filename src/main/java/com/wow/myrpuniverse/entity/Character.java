@@ -7,13 +7,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
@@ -22,6 +26,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -49,13 +54,21 @@ public class Character implements Serializable {
     @Column(name = "DS_CHR_AVATAR")
     private String avatarPath;
 
-    @Max(value = 999999, message = "Age sie exceeds limit")
+    @Max(value = 999999, message = "Age size exceeds limit")
     @Column(name = "DS_CHR_AGE")
     private Long age;
 
     @Convert(converter = CurrentSituationConverter.class)
     @OrderColumn(name = "DS_CHR_CURRENT_SITUATION")
     private CurrentSituationEnum currentSituation;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "TB_REL_CHR_BDG",
+            joinColumns = @JoinColumn(name = "CD_REL_CHR_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "CD_REL_BDG_ID", referencedColumnName = "ID")
+    )
+    private List<Badge> badges;
 
     @ManyToOne
     @JoinColumn(name = "CD_CHR_USR_ID", referencedColumnName = "ID")
