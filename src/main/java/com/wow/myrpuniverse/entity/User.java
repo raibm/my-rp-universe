@@ -1,4 +1,4 @@
-package com.wow.myrpuniverse.domain;
+package com.wow.myrpuniverse.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,17 +1,21 @@
-package com.wow.myrpuniverse.domain;
+package com.wow.myrpuniverse.entity;
 
+import com.wow.myrpuniverse.enumeration.CurrentSituationEnum;
+import com.wow.myrpuniverse.enumeration.converter.CurrentSituationConverter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
@@ -48,6 +52,10 @@ public class Character implements Serializable {
     @Max(value = 999999, message = "Age sie exceeds limit")
     @Column(name = "DS_CHR_AGE")
     private Long age;
+
+    @Convert(converter = CurrentSituationConverter.class)
+    @OrderColumn(name = "DS_CHR_CURRENT_SITUATION")
+    private CurrentSituationEnum currentSituation;
 
     @ManyToOne
     @JoinColumn(name = "CD_CHR_USR_ID", referencedColumnName = "ID")
