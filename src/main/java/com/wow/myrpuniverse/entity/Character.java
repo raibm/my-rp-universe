@@ -1,5 +1,6 @@
 package com.wow.myrpuniverse.entity;
 
+import com.wow.myrpuniverse.entity.rel.RelCharacterBadge;
 import com.wow.myrpuniverse.enumeration.CurrentSituationEnum;
 import com.wow.myrpuniverse.enumeration.converter.CurrentSituationConverter;
 import lombok.AllArgsConstructor;
@@ -16,9 +17,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -62,13 +62,8 @@ public class Character implements Serializable {
     @OrderColumn(name = "DS_CHR_CURRENT_SITUATION")
     private CurrentSituationEnum currentSituation;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "TB_REL_CHR_BDG",
-            joinColumns = @JoinColumn(name = "CD_REL_CHR_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "CD_REL_BDG_ID", referencedColumnName = "ID")
-    )
-    private List<Badge> badges;
+    @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<RelCharacterBadge> badges;
 
     @ManyToOne
     @JoinColumn(name = "CD_CHR_USR_ID", referencedColumnName = "ID")
