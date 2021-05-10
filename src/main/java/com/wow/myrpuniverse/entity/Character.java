@@ -65,6 +65,9 @@ public class Character implements Serializable {
     @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<RelCharacterBadge> badges;
 
+    @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Card> cards;
+
     @ManyToOne
     @JoinColumn(name = "CD_CHR_USR_ID", referencedColumnName = "ID")
     private User user;
