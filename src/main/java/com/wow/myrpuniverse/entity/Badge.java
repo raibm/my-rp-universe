@@ -16,6 +16,16 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+
+/**
+ * @author rai.maciel
+ * Entidade responsável pelo gerenciamento de Badges.
+ *
+ *   As Badges são usadas para representar conquistas dos personagens (Characters),
+ * podendo ser raras ou não.
+ * @version 0.0.0
+ */
+
 @Getter
 @Setter
 @Entity

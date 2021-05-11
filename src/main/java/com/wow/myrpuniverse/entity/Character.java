@@ -28,6 +28,16 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
+
+/**
+ * @author rai.maciel
+ * Entidade responsável pelo gerenciamento de Characters (Personagens).
+ *
+ *   Os Personagens são usados para identificar os jogadores no universo de RP,
+ * possuem conquistas, badges entre outras funcionalidades.
+ * @version 0.0.0
+ */
+
 @Getter
 @Setter
 @Entity
