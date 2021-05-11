@@ -48,7 +48,7 @@ public class Character implements Serializable {
     private String name;
 
     @Column(name = "DS_CHR_DESCRIPTION")
-    @Size(max = 32, message = "Description size exceeds limit")
+    @Size(max = 5000, message = "Description size exceeds limit")
     private String description;
 
     @Column(name = "DS_CHR_AVATAR")

@@ -9,7 +9,7 @@ public enum CurrentSituationEnum {
     DISAPPEARED(2),
     ARRESTED(3);
 
-    private Integer cod;
+    private final Integer cod;
 
     CurrentSituationEnum(Integer cod) {
         this.cod = cod;
