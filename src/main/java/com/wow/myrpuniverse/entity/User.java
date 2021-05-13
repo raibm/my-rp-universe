@@ -39,6 +39,10 @@ public class User implements Serializable {
     @Size(min = 2, max = 32, message = "Name must be between 2 and 32 characters long")
     private String name;
 
+    @Column(name = "NM_USR_LAST_NAME")
+    @Size(max = 40, message = "Last name must be 40 characters long")
+    private String lastName;
+
     @NotBlank(message = "E-mail may not be blank")
     @Column(name = "DS_USR_EMAIL")
     private String email;
