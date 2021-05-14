@@ -7,7 +7,8 @@ public enum CurrentSituationEnum {
     DEAD(0),
     ALIVE(1),
     DISAPPEARED(2),
-    ARRESTED(3);
+    ARRESTED(3),
+    UNKNOWN(4);
 
     private final Integer cod;
 

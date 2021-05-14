@@ -6,7 +6,7 @@
     <changeSet author="rai.maciel" id="202105112308">
 
         <createTable tableName="TB_USR_USER" remarks="Tabela responsável pelo armazenamento dos dados de um usuário.">
-            <column name="ID" type="NUMERIC(7)" remarks="Identifsicador único gerado automaticamente para o usuário, chave primária.">
+            <column name="ID" type="NUMERIC(7)" remarks="Identificador único gerado automaticamente para o usuário, chave primária.">
                 <constraints primaryKeyName="PK_ID_USER" nullable="false" primaryKey="true" unique="true"/>
             </column>
             <column name="NM_USR_NAME" type="VARCHAR(32)" remarks="Nome do usuário.">

@@ -12,7 +12,7 @@ public class CurrentSituationConverter implements AttributeConverter<CurrentSitu
         Integer currentSituationCod = null;
 
         if (Objects.isNull(value)) {
-            return currentSituationCod;
+            return CurrentSituationEnum.UNKNOWN.getCod();
         }
 
         for (CurrentSituationEnum e : CurrentSituationEnum.values()) {
@@ -29,7 +29,7 @@ public class CurrentSituationConverter implements AttributeConverter<CurrentSitu
         CurrentSituationEnum currentSituationEnum = null;
 
         if (Objects.isNull(value)) {
-            return currentSituationEnum;
+            return CurrentSituationEnum.UNKNOWN;
         }
 
         for (CurrentSituationEnum e : CurrentSituationEnum.values()) {

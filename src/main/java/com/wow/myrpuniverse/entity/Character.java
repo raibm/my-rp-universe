@@ -65,11 +65,11 @@ public class Character implements Serializable {
     private String avatarPath;
 
     @Max(value = 999999, message = "Age size exceeds limit")
-    @Column(name = "DS_CHR_AGE")
+    @Column(name = "NR_CHR_AGE")
     private Long age;
 
     @Convert(converter = CurrentSituationConverter.class)
-    @OrderColumn(name = "DS_CHR_CURRENT_SITUATION")
+    @OrderColumn(name = "NR_CHR_CURRENT_SITUATION")
     private CurrentSituationEnum currentSituation;
 
     @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

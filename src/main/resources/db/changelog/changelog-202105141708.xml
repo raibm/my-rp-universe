@@ -1,0 +1,45 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="rai.maciel" id="202105141712">
+        <createTable tableName="TB_CHR_CHARACTER" remarks="Tabela responsável pelo armazenamento dos dados de um personagem (Personifcação
+                                                            multipla ou não de um Usuário).">
+            <column name="ID" type="NUMERIC(7)" remarks="Identificador único gerado automaticamente para o usuário, chave primária.">
+                <constraints primaryKeyName="PK_ID_CHARACTER" nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="NM_CHR_NAME" type="VARCHAR(50)" remarks="Nome do personagem.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="DS_CHR_DESCRIPTION" type="VARCHAR(5000)" remarks="Descrição do personage, normalmente usada para contar breves
+                                                                            trechos de histórias ou acontecimentos.">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="DS_CHR_AVATAR" type="VARCHAR()" remarks="Caminho para a referência do avatar do personagem.">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="NR_CHR_AGE" type="NUMBER(6)" remarks="Idade referência para o personagem, pode ser atual ou não.">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="DS_CHR_AVATAR" type="VARCHAR()" remarks="Caminho para a referência do avatar do usuário.">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="NR_CHR_CURRENT_SITUATION" type="NUMBER(1)" remarks="Indicador usado para definir a situação atual do personagem, sendo elas:
+                                                                              DEAD=0, ALIVE=1, DISAPPEARED=2, ARRESTED=3 e UNKNOWN=4.
+                                                                              O valor Default é sempre o 4, Desconhecido.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="CD_CHR_USR_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por indicar o objeto dono do relacionamento
+                                                                    , USER.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="rai.maciel" id="202105141729">
+        <addForeignKeyConstraint baseTableName="TB_CHR_CHARACTER" baseColumnNames="CD_CHR_USR_ID"
+                                 constraintName="CHR_USR_ID_PK_FK"
+                                 referencedTableName="TB_USR_USER" referencedColumnNames="ID"/>
+    </changeSet>
+</databaseChangeLog>
