@@ -52,24 +52,24 @@ public class Character implements Serializable {
     @Column(name = "ID", nullable = false, updatable = false, unique = true)
     private Long id;
 
-    @Column(name = "NM_CHR_NAME")
+    @Column(name = "CHR_NAME")
     @NotEmpty(message = "Name may not be empty")
     @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters long")
     private String name;
 
-    @Column(name = "DS_CHR_DESCRIPTION")
+    @Column(name = "CHR_DESCRIPTION")
     @Size(max = 5000, message = "Description size exceeds limit")
     private String description;
 
-    @Column(name = "DS_CHR_AVATAR")
+    @Column(name = "CHR_AVATAR")
     private String avatarPath;
 
     @Max(value = 999999, message = "Age size exceeds limit")
-    @Column(name = "NR_CHR_AGE")
+    @Column(name = "CHR_AGE")
     private Long age;
 
     @Convert(converter = CurrentSituationConverter.class)
-    @OrderColumn(name = "NR_CHR_CURRENT_SITUATION")
+    @OrderColumn(name = "CHR_CURRENT_SITUATION")
     private CurrentSituationEnum currentSituation;
 
     @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -79,6 +79,6 @@ public class Character implements Serializable {
     private List<Card> cards;
 
     @ManyToOne
-    @JoinColumn(name = "CD_CHR_USR_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "CHR_USR_ID", referencedColumnName = "ID")
     private User user;
 }

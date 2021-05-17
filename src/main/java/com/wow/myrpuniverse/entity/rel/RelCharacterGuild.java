@@ -17,7 +17,6 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -32,17 +31,17 @@ public class RelCharacterGuild implements Serializable {
 
     @MapsId(value = "idCharacter")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CD_REL_CHR_ID")
+    @JoinColumn(name = "CHR_CHARACTER_ID")
     private Character character;
 
     @MapsId(value = "idGuild")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CD_REL_GLD_ID")
+    @JoinColumn(name = "GLD_GUILD_ID")
     private Badge badge;
 
-    @Column(name = "DT_REL_ENTRY_DATE")
+    @Column(name = "REL_ENTRY_DATE")
     private LocalDate entryDate;
 
-    @Column(name = "DS_REL_CHR_DESCRIPTION")
+    @Column(name = "REL_CHR_DESCRIPTION")
     private String description;
 }

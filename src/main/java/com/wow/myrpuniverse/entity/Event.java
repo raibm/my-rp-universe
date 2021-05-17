@@ -34,19 +34,19 @@ public class Event implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVT_ID")
     private Long id;
 
-    @Column(name = "NM_EVT_NAME")
+    @Column(name = "EVT_NAME")
     private String name;
 
-    @Column(name = "DS_EVT_DESCRIPTION")
+    @Column(name = "EVT_DESCRIPTION")
     private String description;
 
-    @Column(name = "DT_EVT_START_DATE")
+    @Column(name = "EVT_START_DATE")
     private LocalDateTime startDate;
 
-    @Column(name = "DT_EVT_END_DATE")
+    @Column(name = "EVT_END_DATE")
     private LocalDateTime endDate;
 
-    @Column(name = "DS_EVT_BANNER")
+    @Column(name = "EVT_BANNER")
     private String banner;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

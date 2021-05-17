@@ -29,7 +29,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "TB_BADGE")
+@Table(name = "TB_BDG_BADGE")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Badge {
@@ -40,17 +40,17 @@ public class Badge {
     @Column(name = "ID", nullable = false, updatable = false, unique = true)
     private Long id;
 
-    @Column(name = "NM_BDG_NAME")
+    @Column(name = "BDG_NAME")
     @NotEmpty(message = "Name may not be empty")
     @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters long")
     private String name;
 
-    @Column(name = "DS_BDG_DESCRIPTION")
+    @Column(name = "BDG_DESCRIPTION")
     @NotEmpty(message = "Description may not be empty")
     @Size(max = 32, message = "Description size exceeds limit")
     private String description;
 
-    @Column(name = "DT_BDG_CREATION")
+    @Column(name = "BDT_CREATION")
     private LocalDate creationDate;
 
 }

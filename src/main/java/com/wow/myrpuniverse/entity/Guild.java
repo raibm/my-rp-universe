@@ -36,7 +36,7 @@ public class Guild implements Serializable {
 
     @NotEmpty(message = "Name may not be empty")
     @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters long")
-    @Column(name = "NM_HIR_NAME")
+    @Column(name = "GLD_NAME")
     private String name;
 
     @OneToMany(mappedBy = "guild", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)

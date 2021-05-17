@@ -34,24 +34,24 @@ public class User implements Serializable {
     @Column(name = "ID", nullable = false, updatable = false, unique = true)
     private Long id;
 
-    @Column(name = "NM_USR_NAME")
+    @Column(name = "USR_NAME")
     @NotEmpty(message = "Name may not be empty")
     @Size(min = 2, max = 32, message = "Name must be between 2 and 32 characters long")
     private String name;
 
-    @Column(name = "NM_USR_LAST_NAME")
+    @Column(name = "USR_LAST_NAME")
     @Size(max = 40, message = "Last name must be 40 characters long")
     private String lastName;
 
     @NotBlank(message = "E-mail may not be blank")
-    @Column(name = "DS_USR_EMAIL")
+    @Column(name = "USR_EMAIL")
     private String email;
 
     @NotBlank(message = "Password may not be blank")
-    @Column(name = "DS_USR_PASSWORD")
+    @Column(name = "USR_PASSWORD")
     private String password;
 
-    @Column(name = "DS_USR_AVATAR")
+    @Column(name = "USR_AVATAR")
     private String avatarPath;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

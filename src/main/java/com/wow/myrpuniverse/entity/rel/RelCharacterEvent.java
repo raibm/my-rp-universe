@@ -31,14 +31,14 @@ public class RelCharacterEvent implements Serializable {
 
     @MapsId(value = "idCharacter")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CD_REL_CHR_ID")
+    @JoinColumn(name = "CHR_CHARACTER_ID")
     private Character character;
 
     @MapsId(value = "idEvent")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CD_REL_EVT_ID")
+    @JoinColumn(name = "EVT_EVENT_ID")
     private Event event;
 
-    @Column(name = "DT_REL_ACQUISITION_DATE")
+    @Column(name = "REL_ACQUISITION_DATE")
     private LocalDateTime acquisitionDate;
 }

@@ -30,13 +30,13 @@ public class Card implements Serializable {
     @Column(name = "ID", nullable = false, updatable = false, unique = true)
     private Long id;
 
-    @Column(name = "NM_CRD_TITLE")
+    @Column(name = "CRD_TITLE")
     private String title;
 
-    @Column(name = "DS_CRD_DESCRIPTION")
+    @Column(name = "CRD_DESCRIPTION")
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "CD_CRD_CHARACTER_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "CRD_CHARACTER_ID", referencedColumnName = "ID")
     private Character character;
 }

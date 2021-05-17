@@ -31,14 +31,14 @@ public class RelCharacterBadge implements Serializable {
 
     @MapsId(value = "idCharacter")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CD_REL_CHR_ID")
+    @JoinColumn(name = "CHR_CHARACTER_ID")
     private Character character;
 
     @MapsId(value = "idBadge")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CD_REL_BDG_ID")
+    @JoinColumn(name = "BDG_BADGE_ID")
     private Badge badge;
 
-    @Column(name = "DT_REL_ACQUISITION_DATE")
+    @Column(name = "REL_ACQUISITION_DATE")
     private LocalDateTime acquisitionDate;
 }

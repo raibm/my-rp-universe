@@ -29,20 +29,20 @@ public class Hierarchy implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVT_ID")
     private Long id;
 
-    @Column(name = "NM_HIR_NAME")
+    @Column(name = "HIR_NAME")
     @NotEmpty(message = "Name may not be empty")
     @Size(min = 1, max = 30, message = "Name must be between 1 and 30 characters long")
     private String name;
 
-    @Column(name = "DS_HIR_DESCRIPTION")
+    @Column(name = "HIR_DESCRIPTION")
     @Size(max = 200, message = "Description size exceeds limit")
     private String description;
 
     @NotNull(message = "Order may not be null")
-    @Column(name = "CD_HIR_ORDER")
+    @Column(name = "HIR_ORDER")
     private Long order;
 
     @ManyToOne
-    @JoinColumn(name = "CD_HIR_GUILD_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "HIR_GUILD_ID", referencedColumnName = "ID")
     private Guild guild;
 }
