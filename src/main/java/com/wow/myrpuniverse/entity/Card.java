@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Getter
@@ -30,10 +32,13 @@ public class Card implements Serializable {
     @Column(name = "ID", nullable = false, updatable = false, unique = true)
     private Long id;
 
+    @NotEmpty(message = "Card name may not be empty")
+    @Size(min = 1, max = 50, message = "Card name must be between 1 and 50 characters long")
     @Column(name = "CRD_TITLE")
     private String title;
 
     @Column(name = "CRD_DESCRIPTION")
+    @Size(max = 200, message = "Card description size exceeds limit")
     private String description;
 
     @ManyToOne

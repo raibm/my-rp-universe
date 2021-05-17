@@ -41,13 +41,13 @@ public class Badge {
     private Long id;
 
     @Column(name = "BDG_NAME")
-    @NotEmpty(message = "Name may not be empty")
-    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters long")
+    @NotEmpty(message = "Badge name may not be empty")
+    @Size(min = 1, max = 100, message = "Badge name must be between 2 and 50 characters long")
     private String name;
 
     @Column(name = "BDG_DESCRIPTION")
-    @NotEmpty(message = "Description may not be empty")
-    @Size(max = 32, message = "Description size exceeds limit")
+    @NotEmpty(message = "Badge description may not be empty")
+    @Size(max = 200, message = "Badge description size exceeds limit")
     private String description;
 
     @Column(name = "BDT_CREATION")

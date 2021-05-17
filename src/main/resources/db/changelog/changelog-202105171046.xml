@@ -1,0 +1,75 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="rai.maciel" id="202105171058">
+        <createTable tableName="TB_CRD_CARD" remarks="Tabela responsável pelo armazenamento dos Cartões. Cartões são usados para fazer
+                                                       observações sobre o Personagem.">
+            <column name="ID" type="NUMERIC(7)" remarks="Identificador único gerado automaticamente para o cartão, chave primária.">
+                <constraints primaryKeyName="PK_ID_CARD" nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="CRD_TITLE" type="VARCHAR(50)" remarks="Titúlo do cartão.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="CRD_DESCRIPTION" type="VARCHAR(200)" remarks="Descrição do cartão, normalmente usada para contar breves
+                                                                            trechos de histórias ou acontecimentos.">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="CRD_CHARACTER_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por indicar o Personagem dono do relacionamento.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="rai.maciel" id="202105171106">
+        <addForeignKeyConstraint baseTableName="TB_CRD_CARD" baseColumnNames="CRD_CHARACTER_ID"
+                                 constraintName="CRD_CHR_ID_PK_FK"
+                                 referencedTableName="TB_CHR_CHARACTER" referencedColumnNames="ID"/>
+    </changeSet>
+
+    <changeSet author="rai.maciel" id="202105171107">
+        <createTable tableName="TB_BDG_BADGE" remarks="Tabela responsável pelo armazenamento dos Cartões. Cartões são usados para fazer
+                                                       observações sobre o Personagem.">
+            <column name="ID" type="NUMERIC(7)" remarks="Identificador único gerado automaticamente para o cartão, chave primária.">
+                <constraints primaryKeyName="PK_ID_BADGE" nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="BDG_NAME" type="VARCHAR(50)" remarks="Nome da insígnia.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="BDG_DESCRIPTION" type="VARCHAR(200)" remarks="Descrição da insígina, usada para descrever o que acotecimento.">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="BDT_CREATION" type="DATE" remarks="Data de criação da insígnia, salva pelo sistema.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="rai.maciel" id="202105171114">
+        <createTable tableName="TB_REL_CHR_BDG">
+            <column name="CHR_CHARACTER_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por identificar o personagem.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="BDG_BADGE_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por identificar a insígnia.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="REL_ACQUISITION_DATE" type="TIMESTAMP WITHOUT TIME ZONE" remarks="Data usada para marcar o momento da aquisição da insígnia para com
+            o personagem, salva pelo sistema.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="rai.maciel" id="202105171129">
+        <addForeignKeyConstraint baseTableName="TB_REL_CHR_BDG" baseColumnNames="CHR_CHARACTER_ID"
+                                 constraintName="REL_CHR_ID_PK_FK"
+                                 referencedTableName="TB_CHR_CHARACTER" referencedColumnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="TB_REL_CHR_BDG" baseColumnNames="BDG_BADGE_ID"
+                                 constraintName="REL_BDG_ID_PK_FK"
+                                 referencedTableName="TB_BDG_BADGE" referencedColumnNames="ID"/>
+
+        <addPrimaryKey tableName="TB_REL_CHR_BDG" columnNames="CHR_CHARACTER_ID, BDG_BADGE_ID" constraintName="PK_REL_CHR_BDG"/>
+
+    </changeSet>
+</databaseChangeLog>

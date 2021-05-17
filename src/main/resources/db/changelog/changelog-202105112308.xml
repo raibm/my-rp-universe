@@ -9,19 +9,19 @@
             <column name="ID" type="NUMERIC(7)" remarks="Identificador único gerado automaticamente para o usuário, chave primária.">
                 <constraints primaryKeyName="PK_ID_USER" nullable="false" primaryKey="true" unique="true"/>
             </column>
-            <column name="NM_USR_NAME" type="VARCHAR(32)" remarks="Nome do usuário.">
+            <column name="USR_NAME" type="VARCHAR(32)" remarks="Nome do usuário.">
                 <constraints nullable="false" primaryKey="false" unique="false"/>
             </column>
-            <column name="NM_USR_LAST_NAME" type="VARCHAR(40)" remarks="Sobre nome do usuário.">
+            <column name="USR_LAST_NAME" type="VARCHAR(40)" remarks="Sobre nome do usuário.">
                 <constraints nullable="true" primaryKey="false" unique="false"/>
             </column>
-            <column name="DS_USR_EMAIL" type="VARCHAR()" remarks="E-mail do usuário, deve ser unico, usado para validações.">
+            <column name="USR_EMAIL" type="VARCHAR()" remarks="E-mail do usuário, deve ser unico, usado para validações.">
                 <constraints nullable="false" primaryKey="false" unique="true"/>
             </column>
-            <column name="DS_USR_PASSWORD" type="VARCHAR()" remarks="Senha criptografada do usuário.">
+            <column name="USR_PASSWORD" type="VARCHAR()" remarks="Senha criptografada do usuário.">
                 <constraints nullable="false" primaryKey="false" unique="false"/>
             </column>
-            <column name="DS_USR_AVATAR" type="VARCHAR()" remarks="Caminho para a referência do avatar do usuário.">
+            <column name="USR_AVATAR" type="VARCHAR()" remarks="Caminho para a referência do avatar do usuário.">
                 <constraints nullable="true" primaryKey="false" unique="false"/>
             </column>
         </createTable>
