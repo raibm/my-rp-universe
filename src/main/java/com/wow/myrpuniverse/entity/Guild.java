@@ -1,5 +1,6 @@
 package com.wow.myrpuniverse.entity;
 
+import com.wow.myrpuniverse.entity.rel.RelCharacterGuild;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,4 +42,7 @@ public class Guild implements Serializable {
 
     @OneToMany(mappedBy = "guild", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Hierarchy> hierarchies;
+
+    @OneToMany(mappedBy = "guild", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RelCharacterGuild> members;
 }

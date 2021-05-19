@@ -1,7 +1,8 @@
 package com.wow.myrpuniverse.entity.rel;
 
-import com.wow.myrpuniverse.entity.Badge;
-import com.wow.myrpuniverse.entity.pk.PkRelCharacterBadge;
+import com.wow.myrpuniverse.entity.Guild;
+import com.wow.myrpuniverse.entity.Hierarchy;
+import com.wow.myrpuniverse.entity.pk.PkRelCharacterGuild;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,7 @@ import java.time.LocalDate;
 public class RelCharacterGuild implements Serializable {
 
     @EmbeddedId
-    private PkRelCharacterBadge id;
+    private PkRelCharacterGuild id;
 
     @MapsId(value = "idCharacter")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,11 +38,15 @@ public class RelCharacterGuild implements Serializable {
     @MapsId(value = "idGuild")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "GLD_GUILD_ID")
-    private Badge badge;
+    private Guild guild;
 
     @Column(name = "REL_ENTRY_DATE")
     private LocalDate entryDate;
 
     @Column(name = "REL_CHR_DESCRIPTION")
     private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "REL_HIR_HIERARCHY_ID")
+    private Hierarchy hierarchy;
 }

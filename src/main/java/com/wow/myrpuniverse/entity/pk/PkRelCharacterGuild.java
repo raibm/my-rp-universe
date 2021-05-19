@@ -13,8 +13,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Embeddable
-public class PkRelCharacterEvent implements Serializable {
+public class PkRelCharacterGuild implements Serializable {
 
     private Long idCharacter;
-    private Long idEvent;
+    private Long idGuild;
 }
