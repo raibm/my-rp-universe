@@ -34,8 +34,8 @@ public class Guild implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GLD_ID")
     private Long id;
 
-    @NotEmpty(message = "Name may not be empty")
-    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters long")
+    @NotEmpty(message = "Guild name may not be empty")
+    @Size(min = 2, max = 50, message = "Guild name must be between 2 and 50 characters long")
     @Column(name = "GLD_NAME")
     private String name;
 

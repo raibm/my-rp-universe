@@ -30,15 +30,15 @@ public class Hierarchy implements Serializable {
     private Long id;
 
     @Column(name = "HIR_NAME")
-    @NotEmpty(message = "Name may not be empty")
-    @Size(min = 1, max = 30, message = "Name must be between 1 and 30 characters long")
+    @NotEmpty(message = "Hierarchy name may not be empty")
+    @Size(min = 1, max = 30, message = "Hierarchy name must be between 1 and 30 characters long")
     private String name;
 
     @Column(name = "HIR_DESCRIPTION")
-    @Size(max = 200, message = "Description size exceeds limit")
+    @Size(max = 200, message = "Hierarchy description size exceeds limit")
     private String description;
 
-    @NotNull(message = "Order may not be null")
+    @NotNull(message = "Hierarchu order may not be null")
     @Column(name = "HIR_ORDER")
     private Long order;
 

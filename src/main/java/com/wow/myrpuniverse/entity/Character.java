@@ -53,18 +53,18 @@ public class Character implements Serializable {
     private Long id;
 
     @Column(name = "CHR_NAME")
-    @NotEmpty(message = "Name may not be empty")
-    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters long")
+    @NotEmpty(message = "Character name may not be empty")
+    @Size(min = 2, max = 50, message = "Character name must be between 2 and 50 characters long")
     private String name;
 
     @Column(name = "CHR_DESCRIPTION")
-    @Size(max = 5000, message = "Description size exceeds limit")
+    @Size(max = 5000, message = "Character description size exceeds limit")
     private String description;
 
     @Column(name = "CHR_AVATAR")
     private String avatarPath;
 
-    @Max(value = 999999, message = "Age size exceeds limit")
+    @Max(value = 999999, message = "Chracter age size exceeds limit")
     @Column(name = "CHR_AGE")
     private Long age;
 
