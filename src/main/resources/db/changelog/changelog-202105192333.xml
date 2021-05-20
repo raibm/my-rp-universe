@@ -1,0 +1,55 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="rai.maciel" id="202105192333">
+        <createTable tableName="TB_HIR_HIERARCHY" remarks="Tabela responsável pelo gerenciamento de hierarquias, as mesmas são usadas para definir
+                                                            postos de personagens dentro de uma guilda.">
+            <column name="ID" type="NUMERIC(7)" remarks="Identificador único gerado automaticamente para a hierarquia, chave primária.">
+                <constraints primaryKeyName="PK_ID_HIERARCHY" nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="HIR_NAME" type="VARCHAR(30)" remarks="Nome da hierarquia.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="HIR_DESCRIPTION" type="VARCHAR(200)" remarks="Descrição do hierarquia, usada para descrever simbolicamente seus poderes e deveres
+                                                                         na guilda.">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="HIR_ORDER" type="NUMBER(2)" remarks="Indicador responsável por ordenar a prioridade da hierarquia, sendo 1 a maior.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="HIR_GUILD_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por indicar a guilda responsável pela hierarquia.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="rai.maciel" id="202105192350">
+        <createTable tableName="TB_GLD_GUILD" remarks="Tabela responsável pelo gerenciamento de guilda, guildas são grupos compostas por personagens
+                                                        para unilos a um objetivo maior.">
+            <column name="ID" type="NUMERIC(7)" remarks="Identificador único gerado automaticamente para a guilda, chave primária.">
+                <constraints primaryKeyName="PK_ID_GUILD" nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="GLD_NAME" type="VARCHAR(50)" remarks="Nome da guilda.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="rai.maciel" id="202105192355">
+        <addForeignKeyConstraint baseTableName="TB_HIR_HIERARCHY" baseColumnNames="HIR_GUILD_ID"
+                                 constraintName="HIR_GLD_ID_PK_FK"
+                                 referencedTableName="TB_GLD_GUILD" referencedColumnNames="ID"/>
+
+
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_HIR_ID" startValue="1"/>
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_GLD_ID" startValue="1"/>
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_BDG_ID" startValue="1"/>
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_CRD_ID" startValue="1"/>
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_CHR_ID" startValue="1"/>
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_USR_ID" startValue="1"/>
+
+    </changeSet>
+
+</databaseChangeLog>
