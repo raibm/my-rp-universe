@@ -41,15 +41,26 @@
         <addForeignKeyConstraint baseTableName="TB_HIR_HIERARCHY" baseColumnNames="HIR_GUILD_ID"
                                  constraintName="HIR_GLD_ID_PK_FK"
                                  referencedTableName="TB_GLD_GUILD" referencedColumnNames="ID"/>
-
-
-        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_HIR_ID" startValue="1"/>
-        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_GLD_ID" startValue="1"/>
-        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_BDG_ID" startValue="1"/>
-        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_CRD_ID" startValue="1"/>
-        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_CHR_ID" startValue="1"/>
-        <createSequence cacheSize="20" cycle="false" incrementBy="1" ordered="false" sequenceName="SEQ_USR_ID" startValue="1"/>
-
     </changeSet>
+
+    <changeSet author="rai.maciel" id="202105192356">
+        <createSequence sequenceName="SEQ_GLD_ID" dataType="BIGINT" incrementBy="1" minValue="1" startValue="1"/>
+    </changeSet>
+    <changeSet author="rai.maciel" id="202105192357">
+        <createSequence sequenceName="SEQ_HIR_ID" dataType="BIGINT" incrementBy="1" minValue="1" startValue="1"/>
+    </changeSet>
+    <changeSet author="rai.maciel" id="202105192358">
+        <createSequence sequenceName="SEQ_BDG_ID" dataType="BIGINT" incrementBy="1" minValue="1" startValue="1"/>
+    </changeSet>
+    <changeSet author="rai.maciel" id="202105192359">
+        <createSequence sequenceName="SEQ_CRD_ID" dataType="BIGINT" incrementBy="1" minValue="1" startValue="1"/>
+    </changeSet>
+    <changeSet author="rai.maciel" id="202105190000">
+        <createSequence sequenceName="SEQ_CHR_ID" dataType="BIGINT" incrementBy="1" minValue="1" startValue="1"/>
+    </changeSet>
+    <changeSet author="rai.maciel" id="202105190001">
+        <createSequence sequenceName="SEQ_USR_ID" dataType="BIGINT" incrementBy="1" minValue="1" startValue="1"/>
+    </changeSet>
+
 
 </databaseChangeLog>
