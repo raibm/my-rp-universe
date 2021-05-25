@@ -1,0 +1,41 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="rai.maciel" id="202105241420">
+        <createTable tableName="TB_REL_CHR_GLD">
+            <column name="CHR_CHARACTER_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por identificar o personagem.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="GLD_GUILD_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por identificar a guilda.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="REL_ENTRY_DATE" type="TIMESTAMP WITHOUT TIME ZONE" remarks="Data usada para marcar o épico momento da entrada
+                                                do personagem na guilda.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="REL_HIR_HIERARCHY_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por indicar a hierarquia atual
+                                                      do personagem na guilda.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="rai.maciel" id="202105251953">
+        <addForeignKeyConstraint baseTableName="TB_REL_CHR_GLD" baseColumnNames="CHR_CHARACTER_ID"
+                                 constraintName="REL_CHR_GLD_ID_PK_FK"
+                                 referencedTableName="TB_CHR_CHARACTER" referencedColumnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="TB_REL_CHR_GLD" baseColumnNames="GLD_GUILD_ID"
+                                 constraintName="REL_BDG_GLD_ID_PK_FK"
+                                 referencedTableName="TB_GLD_GUILD" referencedColumnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="TB_REL_CHR_GLD" baseColumnNames="REL_HIR_HIERARCHY_ID"
+                                 constraintName="REL_HIR_GLD_ID_PK_FK"
+                                 referencedTableName="TB_HIR_HIERARCHY" referencedColumnNames="ID"/>
+
+        <addPrimaryKey tableName="TB_REL_CHR_GLD" columnNames="CHR_CHARACTER_ID, GLD_GUILD_ID" constraintName="PK_REL_CHR_GLD"/>
+
+    </changeSet>
+
+
+</databaseChangeLog>

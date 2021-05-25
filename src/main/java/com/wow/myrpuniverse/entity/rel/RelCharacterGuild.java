@@ -43,9 +43,6 @@ public class RelCharacterGuild implements Serializable {
     @Column(name = "REL_ENTRY_DATE")
     private LocalDate entryDate;
 
-    @Column(name = "REL_CHR_DESCRIPTION")
-    private String description;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "REL_HIR_HIERARCHY_ID")
     private Hierarchy hierarchy;
