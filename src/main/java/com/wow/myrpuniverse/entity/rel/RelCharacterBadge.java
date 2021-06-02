@@ -1,6 +1,7 @@
 package com.wow.myrpuniverse.entity.rel;
 
 import com.wow.myrpuniverse.entity.Badge;
+import com.wow.myrpuniverse.entity.Character;
 import com.wow.myrpuniverse.entity.pk.PkRelCharacterBadge;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

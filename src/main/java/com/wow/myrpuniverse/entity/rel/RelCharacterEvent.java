@@ -1,6 +1,7 @@
 package com.wow.myrpuniverse.entity.rel;
 
 import com.wow.myrpuniverse.entity.Event;
+import com.wow.myrpuniverse.entity.Character;
 import com.wow.myrpuniverse.entity.pk.PkRelCharacterEvent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -2,6 +2,7 @@ package com.wow.myrpuniverse.entity.rel;
 
 import com.wow.myrpuniverse.entity.Guild;
 import com.wow.myrpuniverse.entity.Hierarchy;
+import com.wow.myrpuniverse.entity.Character;
 import com.wow.myrpuniverse.entity.pk.PkRelCharacterGuild;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -31,7 +31,7 @@ public class Guild implements Serializable {
 
     @Id
     @Column(name = "ID")
-    @SequenceGenerator(name = "SEQ_GLD_ID", sequenceName = "SEQ_GLD_ID")
+    @SequenceGenerator(name = "SEQ_GLD_ID", sequenceName = "SEQ_GLD_ID", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GLD_ID")
     private Long id;
 

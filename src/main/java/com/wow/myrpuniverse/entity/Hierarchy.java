@@ -25,7 +25,7 @@ public class Hierarchy implements Serializable {
 
     @Id
     @Column(name = "ID")
-    @SequenceGenerator(name = "SEQ_HIR_ID", sequenceName = "SEQ_HIR_ID")
+    @SequenceGenerator(name = "SEQ_HIR_ID", sequenceName = "SEQ_HIR_ID", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVT_ID")
     private Long id;
 
