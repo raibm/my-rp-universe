@@ -1,5 +1,7 @@
 package com.wow.myrpuniverse.service.mapper;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 /**
@@ -9,6 +11,7 @@ import java.util.List;
  * @param <E> - Entity type parameter.
  */
 
+@Component
 public interface EntityMapper<D, E> {
 
     E toEntity(D dto);

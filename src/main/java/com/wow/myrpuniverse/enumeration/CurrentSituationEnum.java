@@ -15,4 +15,10 @@ public enum CurrentSituationEnum {
     CurrentSituationEnum(Integer cod) {
         this.cod = cod;
     }
+
+    public Integer getCod(){
+        return this.cod;
+    }
+
+
 }
