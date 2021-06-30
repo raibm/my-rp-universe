@@ -9,7 +9,7 @@ public class CurrentSituationConverter implements AttributeConverter<CurrentSitu
 
     @Override
     public Integer convertToDatabaseColumn(CurrentSituationEnum value) {
-        Integer currentSituationCod = null;
+        Integer cod = null;
 
         if (Objects.isNull(value)) {
             return CurrentSituationEnum.UNKNOWN.getCod();
@@ -17,16 +17,16 @@ public class CurrentSituationConverter implements AttributeConverter<CurrentSitu
 
         for (CurrentSituationEnum e : CurrentSituationEnum.values()) {
             if (e.equals(value)) {
-                currentSituationCod = e.getCod();
+                cod = e.getCod();
             }
         }
 
-        return currentSituationCod;
+        return cod;
     }
 
     @Override
     public CurrentSituationEnum convertToEntityAttribute(Integer value) {
-        CurrentSituationEnum currentSituationEnum = null;
+        CurrentSituationEnum enumValue = null;
 
         if (Objects.isNull(value)) {
             return CurrentSituationEnum.UNKNOWN;
@@ -34,9 +34,9 @@ public class CurrentSituationConverter implements AttributeConverter<CurrentSitu
 
         for (CurrentSituationEnum e : CurrentSituationEnum.values()) {
             if (e.getCod().equals(value)) {
-                currentSituationEnum = e;
+                enumValue = e;
             }
         }
-        return currentSituationEnum;
+        return enumValue;
     }
 }

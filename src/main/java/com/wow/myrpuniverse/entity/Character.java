@@ -2,6 +2,7 @@ package com.wow.myrpuniverse.entity;
 
 import com.wow.myrpuniverse.entity.rel.RelCharacterBadge;
 import com.wow.myrpuniverse.enumeration.CurrentSituationEnum;
+import com.wow.myrpuniverse.enumeration.RelationshipStatusEnum;
 import com.wow.myrpuniverse.enumeration.converter.CurrentSituationConverter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +20,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
@@ -64,13 +64,17 @@ public class Character implements Serializable {
     @Column(name = "CHR_AVATAR")
     private String avatarPath;
 
-    @Max(value = 999999, message = "Chracter age size exceeds limit")
+    @Max(value = 999999, message = "Character age size exceeds limit")
     @Column(name = "CHR_AGE")
     private Long age;
 
     @Convert(converter = CurrentSituationConverter.class)
-    @OrderColumn(name = "CHR_CURRENT_SITUATION")
-    private CurrentSituationEnum currentSituation;
+    @Column(name = "CHR_CURRENT_RELATIONSHIP")
+    private RelationshipStatusEnum relationshipStatus;
+
+    @Convert(converter = CurrentSituationConverter.class)
+    @Column(name = "CHR_CURRENT_SITUATION")
+    private CurrentSituationEnum situationStatus;
 
     @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<RelCharacterBadge> badges;

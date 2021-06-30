@@ -1,25 +1,28 @@
 package com.wow.myrpuniverse.service.impl;
 
+import com.wow.myrpuniverse.entity.User;
+import com.wow.myrpuniverse.exception.CursedException;
 import com.wow.myrpuniverse.repository.UserRepository;
 import com.wow.myrpuniverse.service.UserService;
 import com.wow.myrpuniverse.service.dto.UserDto;
 import com.wow.myrpuniverse.service.mapper.UserMapper;
 
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import javassist.tools.web.BadHttpRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+@Component
 @Service
-@Transactional
-@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserMapper userMapper;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper){
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+    }
 
     @Override
     public UserDto save(UserDto userDto) {
@@ -27,11 +30,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findById(Long id){
-//        User user = userRepository.findById(id).orElseThrow(
-//                () -> new BusinessException(HttpStatus.NOT_FOUND, "User not found.")
-//        );
-//        return userMapper.toDto(user);
-        return null;
+    public UserDto findById(Long id) {
+        User user = userRepository.findById(id).orElse(new User());
+        return userMapper.toDto(user);
     }
 }

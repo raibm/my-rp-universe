@@ -22,9 +22,14 @@
             <column name="CHR_AGE" type="NUMBER(6)" remarks="Idade referência para o personagem, pode ser atual ou não.">
                 <constraints nullable="true" primaryKey="false" unique="false"/>
             </column>
-            <column name="CHR_CURRENT_SITUATION" type="NUMBER(1)" remarks="Indicador usado para definir a situação atual do personagem, sendo elas:
-                                                                              DEAD=0, ALIVE=1, DISAPPEARED=2, ARRESTED=3 e UNKNOWN=4.
-                                                                              O valor Default é sempre o 4, Desconhecido.">
+            <column name="CHR_CURRENT_SITUATION" type="NUMBER(1)" defaultValue="2" remarks="Indicador usado para definir a situação atual do personagem, sendo elas:
+                                                                              DEAD=0, ALIVE=1 e UNKNOWN=2.
+                                                                              O valor Default é sempre o 2, UNKNOWN.">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="CHR_CURRENT_RELATIONSHIP" type="NUMBER(1)" defaultValue="5" remarks="Indicador usado para definir a situação atual de relacionamento, sendo elas:
+                                                                              SINGLE=0, MARRIED=1, ENGAGED=2, IN_A_RELATIONSHIP=3, WIDOWED=4 e UNKNOWN=5.
+                                                                              O valor Default é sempre o 5, UNKNOWN.">
                 <constraints nullable="false" primaryKey="false" unique="false"/>
             </column>
             <column name="CHR_USR_ID" type="NUMBER(7)" remarks="Chave estrangeira responsável por identificar o usuário dono do relacionamento.">

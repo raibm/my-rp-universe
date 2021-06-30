@@ -1,5 +1,6 @@
 package com.wow.myrpuniverse.service;
 
+import com.wow.myrpuniverse.exception.CursedException;
 import com.wow.myrpuniverse.service.dto.UserDto;
 
 public interface UserService {
@@ -14,6 +15,6 @@ public interface UserService {
      * @param id Chave primária do Usuário usada para realizar a busca.
      * @return Um usuário caso exista
      */
-    UserDto findById(Long id);
+    UserDto findById(Long id) throws CursedException;
 
 }
