@@ -7,22 +7,18 @@ import com.wow.myrpuniverse.service.UserService;
 import com.wow.myrpuniverse.service.dto.UserDto;
 import com.wow.myrpuniverse.service.mapper.UserMapper;
 
-import javassist.tools.web.BadHttpRequest;
-import org.springframework.http.HttpStatus;
+import javassist.NotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Component
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper){
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
 
     @Override
     public UserDto save(UserDto userDto) {
@@ -30,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findById(Long id) {
-        User user = userRepository.findById(id).orElse(new User());
+    public UserDto findById(Long id) throws CursedException, NotFoundException {
+        User user = userRepository.findById(id).orElseThrow(() -> new NotFoundException("notfound"));
         return userMapper.toDto(user);
     }
 }

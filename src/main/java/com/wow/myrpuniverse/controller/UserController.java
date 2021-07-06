@@ -3,6 +3,7 @@ package com.wow.myrpuniverse.controller;
 import com.wow.myrpuniverse.exception.CursedException;
 import com.wow.myrpuniverse.service.UserService;
 import com.wow.myrpuniverse.service.dto.UserDto;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +53,7 @@ public class UserController {
      * @return um usuário da base ou um erro 401
      */
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> getUser(@PathVariable(value="id") Long id) {
+    public ResponseEntity<UserDto> getUser(@PathVariable(value="id") Long id) throws CursedException, NotFoundException {
         LOGGER.info(REQUEST_TO_FIND_MSG, ENTITY_NAME);
         UserDto userFinded = userService.findById(id);
         return ResponseEntity.ok().body(userFinded);
